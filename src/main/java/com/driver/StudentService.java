@@ -1,9 +1,20 @@
 package com.driver;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
+@Service
 public class StudentService {
-    StudentRepository studentRepository=new StudentRepository();
+
+    public StudentService() {
+        System.out.println("Bean of Student Service is created");
+    }
+
+    @Autowired
+    StudentRepository studentRepository;
+
     public void addStudent(Student student) {
         studentRepository.addStudent(student);
     }
@@ -13,7 +24,7 @@ public class StudentService {
     }
 
     public void addStudentTeacherPair(String student, String teacher) {
-        studentRepository.addStudentTeacherPair(student,teacher);
+        studentRepository.addStudentTeacherPair(student, teacher);
     }
 
     public Student getStudentByName(String name) {
